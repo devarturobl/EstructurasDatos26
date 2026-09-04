@@ -355,18 +355,23 @@ productos = [
   }
 ]
 
+
 st.title("Directorio de Productos de Abarrotes")
 st.header("Sistema de Búsqueda de Productos")
 
-idpro = "ART-020"
-ban = 0
-for producto in productos:
-    if producto["codigo"] == idpro:
-        st.text("Producto encontrado:", producto["nombre"])
-        st.text("Precio de:", producto["precio"])
-        st.text("Descripción:", producto["descripcion"])
-        ban = 1
-        break
+idpro = st.text_input("Ingrese el código del producto:")
 
-if ban == 0:
-    st.write("Producto no encontrado")
+def buscar_producto(codigo):
+    ban = 0
+    for producto in productos:
+        if producto["codigo"] == idpro:
+            st.text(f"Producto encontrado: {producto['nombre']}")
+            st.text(f"Precio de: {producto['precio']}")
+            st.text(f"Descripción: {producto['descripcion']}")
+            ban = 1
+            break
+
+    if ban == 0:
+        st.write("Producto no encontrado")
+
+st.button("Buscar", on_click=buscar_producto, args=(idpro,))
