@@ -4,7 +4,7 @@ from nicegui import ui
 # Link de referencia https://docs.python.org/es/3/tutorial/datastructures.html#
 
 # Definir Lista
-item = [20, 50, 9, 45]
+item = [20, 50, 9, 45, 9, 78, 56, 3]
 
 # Definit los metodos para la lista
 def render_list():
@@ -28,7 +28,9 @@ def render_list():
 def do_append():
     if val_input.value is not None:
         item.append(val_input.value)
-        render_list()    
+        render_list() 
+    else:
+        ui.notify('Error: Debes introducir un valor para usar append().', color='warning')   
 
 # Metodo Insert
 def do_insert():
@@ -36,12 +38,24 @@ def do_insert():
         idx = max(0, min(int(idx_input.value), len(item)))
         item.insert(idx, val_input.value)
         render_list()
-
+    else:
+        ui.notify('Error: Faltan datos (Valor o Índice) para realizar insert().', color='warning')
 
 # Metodo Pop
+def do_pop():
+    if not item:
+        ui.notify('Error: La lista está vacía, no se puede hacer pop().', color='negative')
+        return
+    
+    if idx_input is not None:
+            idx = max(0, min(int(idx_input.value), len(item)))
+            item.pop(idx-1)
+            render_list()
 
 # Metodo Clear
-
+def do_clear():
+    item.clear()
+    render_list()
 
 # Interface
 ui.page_title('Visualizador de Listas en Python con NiceGui')
@@ -67,8 +81,8 @@ with ui.column().classes('p-6 gap-6 w-full'):
         with ui.row():
             ui.button('append(x)', icon='add', color='secondary', on_click=do_append)
             ui.button('insert(i)', icon='add_circle', color='info', on_click=do_insert)
-            ui.button('pop(i)', icon='remove', color='warning')
-            ui.button('clear()', icon='delete', color='red')
+            ui.button('pop(i)', icon='remove', color='warning', on_click=do_pop)
+            ui.button('clear()', icon='delete', color='red', on_click=do_clear)
 
 render_list()
 ui.run()
