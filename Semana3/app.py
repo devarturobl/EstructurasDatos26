@@ -1,6 +1,6 @@
 from nicegui import ui
 
-i.markdown("# Este es mi primer proyecto con NiceGui")
+ui.markdown("# Este es mi primer proyecto con NiceGui")
 ui.label("Hola a mi primer Etiqueta")
 ui.link("Consulta este y otros repositorios", 'https://github.com/devarturobl/EstructurasDatos26')
 ui.button("Mi Boton")
