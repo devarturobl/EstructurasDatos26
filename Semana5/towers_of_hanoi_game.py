@@ -13,7 +13,7 @@ ui.add_head_html(
     }
     .peg-glow:hover {
         border-color: #6366f1 !important;
-        background-color: rgba(99, 102, 241, 0.05);
+        background-color: rgba(0, 255, 0, 0);
     }
 </style>
 """,
@@ -24,7 +24,7 @@ ui.add_head_html(
 class HanoiGame:
 
   def __init__(self):
-    self.num_disks = 4
+    self.num_disks = 5
     self.pegs = {"A": [], "B": [], "C": []}
     self.selected_peg = None
     self.moves_count = 0

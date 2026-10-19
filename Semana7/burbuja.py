@@ -1,6 +1,6 @@
 from nicegui import ui
 
-originales = [5, 9, 2, 7, 9, 6, 3, 5, 4, 7, 9, 3, 5, 4, 7, 7, 8, 2]
+originales = [1, 34, 55, 22, 5, 9, 2, 7, 9, 6, 3, 5, 4, 7, 9, 3, 5, 4, 7, 7, 8, 2, 1, 20, 10]
 valores = originales.copy()
 
 def burburja_asc():
